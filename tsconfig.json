@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng9-password-strength-bar": [
+        "dist/ng9-password-strength-bar/ng9-password-strength-bar",
+        "dist/ng9-password-strength-bar"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
