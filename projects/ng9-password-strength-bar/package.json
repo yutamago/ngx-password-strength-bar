@@ -1,6 +1,17 @@
 {
   "name": "ng9-password-strength-bar",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Angular Password Strength Bar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnadler/ng9-password-strength-bar.git"
+  },
+  "author": "Robert Nadler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rnadler/ng9-password-strength-bar/issues"
+  },
+  "homepage": "https://github.com/rnadler/ng9-password-strength-bar#readme",
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9"
