@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/rnadler/ng9-password-strength-bar.svg?branch=master)](https://travis-ci.org/rnadler/ng9-password-strength-bar)
 [![npm version](https://badge.fury.io/js/ng9-password-strength-bar.svg)](https://badge.fury.io/js/ng9-password-strength-bar)
 
-This an Angular 9 implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
+This an Angular 9+ implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
 
 [Try it live!](https://plnkr.co/edit/z0x5gG?p=preview)
 
@@ -20,7 +20,7 @@ This an Angular 9 implementation of [ng2-password-strength-bar](https://www.npmj
 
 ## Run the tests locally
 - Same as above, except for the last step do:
-- `npm run test ng9-password-strength-bar-app`  # Will run the tests once with the Chrome browser
+- `npm run test ng9-password-strength-bar-app`  # Will run the tests once with the Firefox browser
 
 ## Using the Component
 ### Add Component to Module imports
