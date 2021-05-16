@@ -12,6 +12,7 @@ import {Component} from '@angular/core';
         <ng9-password-strength-bar [passwordToCheck]="account.password" [barColors]="myColors"
                                    [barLabel]="barLabel"
                                    [baseColor]="baseColor"
+                                   [customThresholds]="thresholds"
                                    [strengthLabels]="strengthLabels"
                                    (onStrengthChanged)="strengthChanged($event)">
         </ng9-password-strength-bar>
@@ -27,6 +28,7 @@ export class AppComponent {
   public barLabel = 'Password strength:';
   public strengthLabels = ['(Useless)', '(Weak)', '(Normal)', '(Strong)', '(Great!)'];
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
+  public thresholds = [90, 75, 45, 25];
   public strength = 0;
 
   strengthChanged(strength: number) {
