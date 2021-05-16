@@ -11,7 +11,8 @@ import {Component} from '@angular/core';
                minlength="5" maxlength="50" required>
         <ng9-password-strength-bar [passwordToCheck]="account.password" [barColors]="myColors"
                                    [barLabel]="barLabel"
-                                   [baseColor]="baseColor" [customThresholds]="thresholds"
+                                   [baseColor]="baseColor"
+                                   [customThresholds]="thresholds"
                                    [strengthLabels]="strengthLabels"
                                    (onStrengthChanged)="strengthChanged($event)">
         </ng9-password-strength-bar>

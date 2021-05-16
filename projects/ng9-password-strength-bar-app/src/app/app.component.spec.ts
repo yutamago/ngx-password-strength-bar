@@ -89,4 +89,16 @@ describe('AppComponent', function () {
       fixture.detectChanges();
       expect(comp.strength).toEqual(0);
     });
+    it('should have correct threshold values', () => {
+      // Custom values
+      comp.account.password = 'testinput-t';
+      comp.thresholds = [20, 75, 45, 25];
+      fixture.detectChanges();
+      expect(comp.strength).toEqual(4);
+      // Default values
+      comp.account.password = 'testinput-tt';
+      comp.thresholds = null;
+      fixture.detectChanges();
+      expect(comp.strength).toEqual(2);
+    });
 });

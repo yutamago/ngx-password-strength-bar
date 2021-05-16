@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ng9-password-strength-bar',
@@ -41,7 +41,7 @@ import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter, OnInit
     </div>
   `
 })
-export class Ng9PasswordStrengthBarComponent implements OnChanges, OnInit {
+export class Ng9PasswordStrengthBarComponent implements OnChanges {
   @Input() passwordToCheck: string;
   @Input() barLabel: string;
   @Input() barColors: Array<string>;
@@ -91,13 +91,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges, OnInit {
 
   constructor() {
     this.colors = this.defaultColors;
-  }
-  ngOnInit(): void {
-    if (this.customThresholds == null) {
-      this.thresholds = this.defaultThresholds;
-    } else {
-      this.thresholds = this.customThresholds
-    }
+    this.thresholds = this.defaultThresholds;
   }
 
   private checkBarColors(): void {
@@ -113,6 +107,14 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges, OnInit {
 
     if (!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this.baseColor)) {
       this.baseColor = this.defaultBaseColor;
+    }
+  }
+
+  private checkThresholds(): void {
+    if (this.customThresholds && this.customThresholds.length === 4) {
+      this.thresholds = this.customThresholds.slice();
+    } else {
+      this.thresholds = this.defaultThresholds;
     }
   }
 
@@ -143,6 +145,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges, OnInit {
     }
     const password = changes['passwordToCheck'].currentValue;
     this.checkBarColors();
+    this.checkThresholds();
     this.setBarColors(5, this.baseColor);
     let strength = 0;
     if (password) {
