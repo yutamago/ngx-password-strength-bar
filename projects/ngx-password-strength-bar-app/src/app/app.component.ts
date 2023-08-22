@@ -9,20 +9,20 @@ import {Component} from '@angular/core';
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
                [(ngModel)]="account.password" #password="ngModel"
                minlength="5" maxlength="50" required>
-        <ng9-password-strength-bar [passwordToCheck]="account.password" [barColors]="myColors"
+        <ngx-password-strength-bar [passwordToCheck]="account.password" [barColors]="myColors"
                                    [barLabel]="barLabel"
                                    [baseColor]="baseColor"
                                    [customThresholds]="thresholds"
                                    [strengthLabels]="strengthLabels"
                                    (onStrengthChanged)="strengthChanged($event)">
-        </ng9-password-strength-bar>
+        </ngx-password-strength-bar>
       </form>
     </div>
   `,
 })
 export class AppComponent {
   public account = {
-    password: null as string
+    password: null as unknown as string
   };
   public baseColor = '#FFF';
   public barLabel = 'Password strength:';

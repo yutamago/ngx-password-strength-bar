@@ -1,31 +1,31 @@
-# ng9-password-strength-bar
+# ngx-password-strength-bar
 
-[![Build Status](https://travis-ci.org/rnadler/ng9-password-strength-bar.svg?branch=master)](https://travis-ci.org/rnadler/ng9-password-strength-bar)
-[![npm version](https://badge.fury.io/js/ng9-password-strength-bar.svg)](https://badge.fury.io/js/ng9-password-strength-bar)
+[![Build Status](https://travis-ci.org/yutamago/ngx-password-strength-bar.svg?branch=master)](https://travis-ci.org/yutamago/ngx-password-strength-bar)
+[![npm version](https://badge.fury.io/js/ngx-password-strength-bar.svg)](https://badge.fury.io/js/ngx-password-strength-bar)
 
-This an Angular 9+ implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
+This an Angular 16+ implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
 
 [Try it live!](https://plnkr.co/edit/z0x5gG?p=preview)
 
 ## Install in your project
 
-`npm install ng9-password-strength-bar --save`
+`npm install ngx-password-strength-bar --save`
 
 ## Run the example application locally
-- `git clone https://github.com/rnadler/ng9-password-strength-bar.git`
-- `cd ng9-password-strength-bar`
+- `git clone https://github.com/yutamago/ngx-password-strength-bar.git`
+- `cd ngx-password-strength-bar`
 - `npm install`
-- `npm run build ng9-password-strength-bar`
-- `npm run start ng9-password-strength-bar-app` # Open browser to http://localhost:4200
+- `npm run build ngx-password-strength-bar`
+- `npm run start ngx-password-strength-bar-app` # Open browser to http://localhost:4200
 
 ## Run the tests locally
 - Same as above, except for the last step do:
-- `npm run test ng9-password-strength-bar-app`  # Will run the tests once with the Firefox browser
+- `npm run test ngx-password-strength-bar-app`  # Will run the tests once with the Firefox browser
 
 ## Using the Component
 ### Add Component to Module imports
 ```angular2html
-import { Ng9PasswordStrengthBarModule } from 'ng9-password-strength-bar';
+import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 //...
 @NgModule({
  //...
@@ -36,7 +36,7 @@ import { Ng9PasswordStrengthBarModule } from 'ng9-password-strength-bar';
     imports: [
       BrowserModule,
       FormsModule,
-      Ng9PasswordStrengthBarModule,
+      NgxPasswordStrengthBarModule,
       //...
  //...
 })
@@ -53,12 +53,12 @@ export class AppModule {}
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
                  [(ngModel)]="account.password" #password="ngModel"
                  minlength="5" maxlength="50" required>
-            <ng9-password-strength-bar
+            <ngx-password-strength-bar
                 [passwordToCheck]="account.password"
                 [barLabel]="barLabel"
                 [customThresholds]="thresholds"
                 [barColors]="myColors">
-            </ng9-password-strength-bar>
+            </ngx-password-strength-bar>
         </form>
     </div>
   `,
@@ -77,7 +77,7 @@ export class App {
 ```
 ## Parameters
 ```angular2html
-<ng9-password-strength-bar
+<ngx-password-strength-bar
   [passwordToCheck]="account.password"
   [barLabel]="barLabel"
   [barColors]="myColors"
@@ -85,7 +85,7 @@ export class App {
   [strengthLabels]="strengthLabels"
   [customThresholds]="thresholds"
   (onStrengthChanged)="strengthChanged($event)">
-</ng9-password-strength-bar>
+</ngx-password-strength-bar>
 ```
 ### Input Parameters
 #### passwordToCheck (type: string)

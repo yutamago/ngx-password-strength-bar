@@ -3,7 +3,7 @@ import { By, BrowserModule } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { Ng9PasswordStrengthBarModule } from 'ng9-password-strength-bar';
+import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 
 describe('AppComponent', function () {
     let de: DebugElement;
@@ -13,7 +13,7 @@ describe('AppComponent', function () {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ BrowserModule, FormsModule, Ng9PasswordStrengthBarModule ],
+            imports: [ BrowserModule, FormsModule, NgxPasswordStrengthBarModule ],
             declarations: [ AppComponent ]
         }).compileComponents();
     }));
@@ -44,7 +44,7 @@ describe('AppComponent', function () {
 
     it('should correctly use default bar colors', () => {
       comp.account.password = 'testinputN';
-      comp.myColors = null;
+      comp.myColors = null!;
       fixture.detectChanges();
       expect(bar0.nativeElement.style.backgroundColor).toBe('rgb(255, 255, 0)');
       expect(de.nativeElement.innerText).toMatch(/\(Normal\)/);
@@ -63,8 +63,8 @@ describe('AppComponent', function () {
     });
 
     it('should correctly show default base color and strength label (none)', () => {
-      comp.baseColor = null;
-      comp.strengthLabels = null;
+      comp.baseColor = null!;
+      comp.strengthLabels = null!;
       fixture.detectChanges();
       expect(bar0.nativeElement.style.backgroundColor).toBe('rgb(221, 221, 221)'); // #DDD
       expect(de.nativeElement.innerText).not.toMatch(/\(Useless\)/);
@@ -97,7 +97,7 @@ describe('AppComponent', function () {
       expect(comp.strength).toEqual(4);
       // Default values
       comp.account.password = 'testinput-tt';
-      comp.thresholds = null;
+      comp.thresholds = null!;
       fixture.detectChanges();
       expect(comp.strength).toEqual(2);
     });

@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'ng9-password-strength-bar',
+  selector: 'ngx-password-strength-bar',
   styles: [`
     .strengthBar {
       display: inline;
@@ -41,26 +41,26 @@ import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter } from 
     </div>
   `
 })
-export class Ng9PasswordStrengthBarComponent implements OnChanges {
-  @Input() passwordToCheck: string;
-  @Input() barLabel: string;
-  @Input() barColors: Array<string>;
-  @Input() baseColor: string;
-  @Input() strengthLabels: Array<string>;
-  @Input() customThresholds: Array<number>;
+export class NgxPasswordStrengthBarComponent implements OnChanges {
+  @Input() passwordToCheck!: string;
+  @Input() barLabel!: string;
+  @Input() barColors!: Array<string>;
+  @Input() baseColor!: string;
+  @Input() strengthLabels!: Array<string>;
+  @Input() customThresholds!: Array<number>;
   @Output() onStrengthChanged: EventEmitter<number> = new EventEmitter<number>();
 
-  bar0: string;
-  bar1: string;
-  bar2: string;
-  bar3: string;
-  bar4: string;
+  bar0!: string;
+  bar1!: string;
+  bar2!: string;
+  bar3!: string;
+  bar4!: string;
 
-  strengthLabel: string;
+  strengthLabel!: string;
 
   private colors: Array<string>;
   private thresholds: Array<number>;
-  strengths: Array<string>;
+  strengths!: Array<string>;
   private defaultColors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
   private defaultThresholds = [90, 70, 40, 20];
   private defaultBaseColor = '#DDD';
@@ -69,9 +69,9 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges {
     let score = 0;
     // award every unique letter until 5 repetitions
     const letters = {};
-    for (let i = 0; i < pass.length; i++) {
-      letters[pass[i]] = (letters[pass[i]] || 0) + 1;
-      score += 5.0 / letters[pass[i]];
+    for (const element of pass) {
+      (letters as any)[element] = ((letters as any)[element] || 0) + 1;
+      score += 5.0 / (letters as any)[element];
     }
     // bonus points for mixing it up
     const variations = {
@@ -83,7 +83,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges {
 
     let variationCount = 0;
     for (let check in variations) {
-      variationCount += (variations[check]) ? 1 : 0;
+      variationCount += ((variations as any)[check]) ? 1 : 0;
     }
     score += (variationCount - 1) * 10;
     return Math.trunc(score);
@@ -102,7 +102,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges {
       this.colors = this.defaultColors;
     }
 
-    this.strengths = this.strengthLabels && this.strengthLabels.length === 5 ? this.strengthLabels.slice() : null;
+    this.strengths = (this.strengthLabels && this.strengthLabels.length === 5 ? this.strengthLabels.slice() : null)!;
     this.setStrengthLabel(0);
 
     if (!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this.baseColor)) {
@@ -136,7 +136,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges {
   }
 
   getStrengthIndexAndColor(password: string) {
-    return this.getColor(Ng9PasswordStrengthBarComponent.measureStrength(password));
+    return this.getColor(NgxPasswordStrengthBarComponent.measureStrength(password));
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
@@ -159,7 +159,7 @@ export class Ng9PasswordStrengthBarComponent implements OnChanges {
 
   private setBarColors(count: number, col: string) {
     for (let _n = 0; _n < count; _n++) {
-      this['bar' + _n] = col;
+      (this as any)['bar' + _n] = col;
     }
   }
   private setStrengthLabel(index: number) {

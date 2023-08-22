@@ -11,4 +11,4 @@ before_script:
 addons:
    firefox: "latest"
 script:
-  - npm run build ng9-password-strength-bar && npm run test ng9-password-strength-bar-app
+  - npm run build ngx-password-strength-bar && npm run test ngx-password-strength-bar-app

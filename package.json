@@ -1,59 +1,47 @@
 {
-  "name": "ng9-password-strength-bar",
+  "name": "ngx-password-strength-bar",
   "version": "1.1.0",
   "description": "Angular Password Strength Bar",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rnadler/ng9-password-strength-bar.git"
+    "url": "git+https://github.com/yutamago/ngx-password-strength-bar.git"
   },
-  "author": "Robert Nadler",
+  "author": "Yutamago",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rnadler/ng9-password-strength-bar/issues"
+    "url": "https://github.com/yutamago/ngx-password-strength-bar/issues"
   },
-  "homepage": "https://github.com/rnadler/ng9-password-strength-bar#readme",
+  "homepage": "https://github.com/yutamago/ngx-password-strength-bar#readme",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "ng serve ngx-password-strength-bar-app",
+    "build:dev": "ng build ngx-password-strength-bar --configuration development --watch",
+    "build:prod": "ng build ngx-password-strength-bar --configuration production",
+    "test": "ng test ngx-password-strength-bar",
+    "test:ci": "ng test ngx-password-strength-bar --watch=false"
   },
   "dependencies": {
-    "@angular/animations": "~9.1.3",
-    "@angular/common": "~9.1.3",
-    "@angular/compiler": "~9.1.3",
-    "@angular/core": "~9.1.3",
-    "@angular/forms": "~9.1.3",
-    "@angular/platform-browser": "~9.1.3",
-    "@angular/platform-browser-dynamic": "~9.1.3",
-    "@angular/router": "~9.1.3",
-    "rxjs": "~6.5.4",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "@angular/animations": "^16.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.7",
-    "@angular-devkit/build-ng-packagr": "~0.901.7",
-    "@angular/cli": "~9.1.3",
-    "@angular/compiler-cli": "~9.1.3",
-    "@angular/language-service": "~9.1.3",
-    "@types/jasmine": "~3.5.0",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
-    "codelyzer": "^5.1.2",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~5.0.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~3.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
-    "ng-packagr": "^10.1.1",
-    "protractor": "~5.4.3",
-    "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "resize-observer-polyfill": "^1.5.1",
+    "@angular-builders/jest": "16.0.0",
+    "@angular-devkit/build-angular": "^16.2.0",
+    "@angular/cli": "~16.2.0",
+    "@angular/compiler-cli": "^16.2.0",
+    "@types/jest": "29.5.3",
+    "jest": "29.6.3",
+    "ng-packagr": "^16.2.0",
+    "typescript": "~5.1.3"
   }
 }
