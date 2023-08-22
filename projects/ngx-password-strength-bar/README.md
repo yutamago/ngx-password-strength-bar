@@ -24,7 +24,7 @@ This an Angular 9+ implementation of [ng2-password-strength-bar](https://www.npm
 
 ## Using the Component
 ### Add Component to Module imports
-```angular2html
+```ts
 import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 //...
 @NgModule({
@@ -43,7 +43,7 @@ import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 export class AppModule {}
 ```
 ### Add Component to your Application
-```angular2html
+```ts
 @Component({
     selector: 'my-app',
     template: `
@@ -64,7 +64,7 @@ export class AppModule {}
   `,
 })
 ```
-```angular2html
+```ts
 export class App {
     public account = {
         password: <string>null
@@ -76,7 +76,7 @@ export class App {
 }
 ```
 ## Parameters
-```angular2html
+```html
 <ngx-password-strength-bar
   [passwordToCheck]="account.password"
   [barLabel]="barLabel"

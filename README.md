@@ -1,11 +1,11 @@
 # ngx-password-strength-bar
 
-[![Build Status](https://travis-ci.org/yutamago/ngx-password-strength-bar.svg?branch=master)](https://travis-ci.org/yutamago/ngx-password-strength-bar)
-[![npm version](https://badge.fury.io/js/ngx-password-strength-bar.svg)](https://badge.fury.io/js/ngx-password-strength-bar)
+[//]: # ([![Build Status]&#40;https://travis-ci.org/yutamago/ngx-password-strength-bar.svg?branch=master&#41;]&#40;https://travis-ci.org/yutamago/ngx-password-strength-bar&#41;)
+[//]: # ([![npm version]&#40;https://badge.fury.io/js/ngx-password-strength-bar.svg&#41;]&#40;https://badge.fury.io/js/ngx-password-strength-bar&#41;)
 
 This an Angular 16+ implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
 
-[Try it live!](https://plnkr.co/edit/z0x5gG?p=preview)
+[//]: # ([Try it live!]&#40;https://plnkr.co/edit/z0x5gG?p=preview&#41;)
 
 ## Install in your project
 
@@ -24,7 +24,7 @@ This an Angular 16+ implementation of [ng2-password-strength-bar](https://www.np
 
 ## Using the Component
 ### Add Component to Module imports
-```angular2html
+```ts
 import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 //...
 @NgModule({
@@ -43,7 +43,7 @@ import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
 export class AppModule {}
 ```
 ### Add Component to your Application
-```angular2html
+```ts
 @Component({
     selector: 'my-app',
     template: `
@@ -64,7 +64,7 @@ export class AppModule {}
   `,
 })
 ```
-```angular2html
+```ts
 export class App {
     public account = {
         password: <string>null
@@ -76,7 +76,7 @@ export class App {
 }
 ```
 ## Parameters
-```angular2html
+```html
 <ngx-password-strength-bar
   [passwordToCheck]="account.password"
   [barLabel]="barLabel"
