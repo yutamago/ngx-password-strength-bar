@@ -16,8 +16,13 @@
     "start": "ng serve ngx-password-strength-bar-app",
     "build:dev": "ng build ngx-password-strength-bar --configuration development --watch",
     "build:prod": "ng build ngx-password-strength-bar --configuration production",
-    "test": "ng test ngx-password-strength-bar",
-    "test:ci": "ng test ngx-password-strength-bar --watch=false"
+
+    "test:lib": "ng test ngx-password-strength-bar",
+    "test:app": "ng test ngx-password-strength-bar-app",
+
+    "test": "npm run test:ci:app && npm run test:ci:lib",
+    "test:ci": "npm run test:app --watch=false && npm run test:lib --watch=false",
+    "publish": "cd dist/ngx-password-strength-bar && npm publish"
   },
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -33,14 +38,16 @@
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "resize-observer-polyfill": "^1.5.1",
-    "@angular-builders/jest": "16.0.0",
+    "@angular-builders/jest": "^16.0.0",
     "@angular-devkit/build-angular": "^16.2.0",
-    "@angular/cli": "~16.2.0",
+    "@angular/cli": "^16.2.0",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jest": "29.5.3",
-    "jest": "29.6.3",
+    "jest": "^29.6.3",
+    "jest-preset-angular": "^13.1.1",
     "ng-packagr": "^16.2.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "ts-node": "~10.9.1",
     "typescript": "~5.1.3"
   }
 }

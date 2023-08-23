@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxPasswordStrengthBarComponent } from './ngx-password-strength-bar.component';
 
@@ -6,9 +6,9 @@ describe('NgxPasswordStrengthBarComponent', () => {
   let component: NgxPasswordStrengthBarComponent;
   let fixture: ComponentFixture<NgxPasswordStrengthBarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NgxPasswordStrengthBarComponent ]
+  beforeEach((async () => {
+    await TestBed.configureTestingModule({
+      imports: [ NgxPasswordStrengthBarComponent ]
     })
     .compileComponents();
   }));

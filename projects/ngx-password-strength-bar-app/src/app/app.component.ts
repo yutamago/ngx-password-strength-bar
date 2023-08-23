@@ -1,28 +1,16 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {NgxPasswordStrengthBarComponent} from 'ngx-password-strength-bar';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h3>Angular Password Strength Bar</h3>
-    <div>
-      <form name="myForm" novalidate>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
-               [(ngModel)]="account.password" #password="ngModel"
-               minlength="5" maxlength="50" required>
-        <ngx-password-strength-bar [passwordToCheck]="account.password" [barColors]="myColors"
-                                   [barLabel]="barLabel"
-                                   [baseColor]="baseColor"
-                                   [customThresholds]="thresholds"
-                                   [strengthLabels]="strengthLabels"
-                                   (onStrengthChanged)="strengthChanged($event)">
-        </ngx-password-strength-bar>
-      </form>
-    </div>
-  `,
+  templateUrl: 'app.component.html',
+  standalone: true,
+  imports: [NgxPasswordStrengthBarComponent, FormsModule],
 })
 export class AppComponent {
   public account = {
-    password: null as unknown as string
+    password: null as unknown as string,
   };
   public baseColor = '#FFF';
   public barLabel = 'Password strength:';

@@ -43,7 +43,8 @@
             "polyfills": [
               "zone.js",
               "zone.js/testing"
-            ]
+            ],
+            "inlineStyleLanguage": ["scss"]
           }
         }
       }
@@ -134,23 +135,15 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "tsConfig": "projects/ngx-password-strength-bar-app/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/ngx-password-strength-bar-app/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/ngx-password-strength-bar-app/src/favicon.ico",
-              "projects/ngx-password-strength-bar-app/src/assets"
-            ],
-            "styles": [
-              "projects/ngx-password-strength-bar-app/src/styles.scss"
-            ],
-            "scripts": []
-          }
-          }
-            }
+            "inlineStyleLanguage": ["scss"]
           }
         }
       }
+    }
+  }
+}

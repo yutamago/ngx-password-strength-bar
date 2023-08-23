@@ -1,69 +1,39 @@
-import { Component, OnChanges, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'ngx-password-strength-bar',
-  styles: [`
-    .strengthBar {
-      display: inline;
-      list-style: none;
-      margin: 0 0 0 15px;
-      padding: 0;
-      vertical-align: 2px;
-    }
-
-    .strengthBar .point {
-      background: #DDD;
-      border-radius: 2px;
-      display: inline-block;
-      height: 5px;
-      margin-right: 1px;
-      width: 20px;
-    }
-
-    .strengthBar .point:last-child {
-      margin: 0;
-    }
-    .pre {
-      white-space: pre;
-    }
-  `],
-  template: `
-    <div id="strength" #strength>
-      <small>{{barLabel}}</small>
-      <ul id="strengthBar" class="strengthBar">
-        <li id="bar0" class="point" [style.background-color]="bar0"></li>
-        <li class="point" [style.background-color]="bar1"></li>
-        <li class="point" [style.background-color]="bar2"></li>
-        <li class="point" [style.background-color]="bar3"></li>
-        <li class="point" [style.background-color]="bar4"></li>
-      </ul>
-      <small [hidden]="!strengths" class="pre">  {{strengthLabel}}</small>
-    </div>
-  `
+  templateUrl: 'ngx-password-strength-bar.component.html',
+  styleUrls: ['ngx-password-strength-bar.component.scss'],
+  standalone: true,
+  host: {
+    'attr.data-password-strength-instance': String(NgxPasswordStrengthBarComponent.INSTANCE_NUMBER++),
+  },
 })
 export class NgxPasswordStrengthBarComponent implements OnChanges {
-  @Input() passwordToCheck!: string;
-  @Input() barLabel!: string;
-  @Input() barColors!: Array<string>;
-  @Input() baseColor!: string;
-  @Input() strengthLabels!: Array<string>;
-  @Input() customThresholds!: Array<number>;
+  public static INSTANCE_NUMBER = 0;
+
+  @Input() passwordToCheck?: string;
+  @Input() barLabel?: string;
+  @Input() barColors?: Array<string>;
+  @Input() baseColor?: string;
+  @Input() strengthLabels?: Array<string>;
+  @Input() customThresholds?: Array<number>;
   @Output() onStrengthChanged: EventEmitter<number> = new EventEmitter<number>();
 
-  bar0!: string;
-  bar1!: string;
-  bar2!: string;
-  bar3!: string;
-  bar4!: string;
+  bar0?: string;
+  bar1?: string;
+  bar2?: string;
+  bar3?: string;
+  bar4?: string;
 
-  strengthLabel!: string;
+  strengthLabel?: string;
 
   private colors: Array<string>;
   private thresholds: Array<number>;
-  strengths!: Array<string>;
-  private defaultColors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
-  private defaultThresholds = [90, 70, 40, 20];
-  private defaultBaseColor = '#DDD';
+  strengths?: Array<string> | null;
+  private readonly defaultColors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
+  private readonly defaultThresholds = [90, 70, 40, 20];
+  private readonly defaultBaseColor = '#DDD';
 
   private static measureStrength(pass: string) {
     let score = 0;
@@ -102,10 +72,10 @@ export class NgxPasswordStrengthBarComponent implements OnChanges {
       this.colors = this.defaultColors;
     }
 
-    this.strengths = (this.strengthLabels && this.strengthLabels.length === 5 ? this.strengthLabels.slice() : null)!;
+    this.strengths = (this.strengthLabels?.length === 5 ? this.strengthLabels.slice() : null);
     this.setStrengthLabel(0);
 
-    if (!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this.baseColor)) {
+    if (!this.baseColor || !/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(this.baseColor)) {
       this.baseColor = this.defaultBaseColor;
     }
   }
@@ -131,7 +101,7 @@ export class NgxPasswordStrengthBarComponent implements OnChanges {
     }
     return {
       idx: idx + 1,
-      col: this.colors[idx]
+      col: this.colors[idx],
     };
   }
 
@@ -139,14 +109,20 @@ export class NgxPasswordStrengthBarComponent implements OnChanges {
     return this.getColor(NgxPasswordStrengthBarComponent.measureStrength(password));
   }
 
-  ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
-    if (!changes['passwordToCheck']) {
-      return;
-    }
-    const password = changes['passwordToCheck'].currentValue;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      !changes['passwordToCheck' as keyof NgxPasswordStrengthBarComponent]
+      && !changes['barLabel' as keyof NgxPasswordStrengthBarComponent]
+      && !changes['barColors' as keyof NgxPasswordStrengthBarComponent]
+      && !changes['baseColor' as keyof NgxPasswordStrengthBarComponent]
+      && !changes['strengthLabels' as keyof NgxPasswordStrengthBarComponent]
+      && !changes['customThresholds' as keyof NgxPasswordStrengthBarComponent]
+    ) return;
+
+    const password = this.passwordToCheck;
     this.checkBarColors();
     this.checkThresholds();
-    this.setBarColors(5, this.baseColor);
+    this.setBarColors(5, this.baseColor ?? this.defaultBaseColor);
     let strength = 0;
     if (password) {
       const c = this.getStrengthIndexAndColor(password);
@@ -162,9 +138,12 @@ export class NgxPasswordStrengthBarComponent implements OnChanges {
       (this as any)['bar' + _n] = col;
     }
   }
+
   private setStrengthLabel(index: number) {
     if (this.strengths) {
       this.strengthLabel = this.strengths[index];
+    } else {
+      this.strengthLabel = '';
     }
   }
 }

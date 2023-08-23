@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
-import { NgxPasswordStrengthBarComponent } from './ngx-password-strength-bar.component';
-
+import {NgModule} from '@angular/core';
+import {NgxPasswordStrengthBarComponent} from './ngx-password-strength-bar.component';
 
 
 @NgModule({
-  declarations: [NgxPasswordStrengthBarComponent],
-  imports: [
-  ],
-  exports: [NgxPasswordStrengthBarComponent]
+  imports: [NgxPasswordStrengthBarComponent],
+  exports: [NgxPasswordStrengthBarComponent],
 })
-export class NgxPasswordStrengthBarModule { }
+export class NgxPasswordStrengthBarModule {
+}
